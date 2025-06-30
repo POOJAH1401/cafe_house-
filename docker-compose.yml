@@ -1,7 +1,7 @@
- version: '3'
+version: '3'
 services:
   web:
-    image: cafe-house
+    image: cafe-house:latest
     ports:
       - "80:80"
-    restart: always
+    
