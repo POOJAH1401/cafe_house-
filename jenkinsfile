@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+    
+    stages{
+        stage("clone code"){
+            steps{
+                echo"clonning the code"
+                git credentialsId: 'github-creds', url: 'https://github.com/POOJAH1401/cafe_house-.git', branch: 'main'
+            }
+        }
+        stage("Build"){
+            steps{
+                echo"building the image"
+                sh "docker build -t cafe-house ."
+            }
+        }
+        stage("Push to dockerhub"){
+            steps{
+                echo"pushing image to dockerhhub"
+                withCredentials([usernamePassword(credentialsId:"dockerhub_creds",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker tag cafe-house ${env.dockerHubUser}/cafe-house:latest"
+                sh "docker push ${env.dockerHubUser}/cafe-house:latest"
+                }
+            }
+        }
+        stage("deploy code"){
+            steps{
+                echo"deploying the container"
+                sh "docker-compose down && docker-compose up -d"
+            }
+        }
+    
+    }
+}
