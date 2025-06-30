@@ -1,0 +1,6 @@
+ web:
+    image: cafe-house:latest
+    build:
+      context: .
+    ports:
+      - "80:80"
