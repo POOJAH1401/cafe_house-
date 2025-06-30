@@ -1,6 +1,7 @@
- web:
-    image: cafe-house:latest
-    build:
-      context: .
+ version: '3'
+services:
+  web:
+    image: cafe-house
     ports:
       - "80:80"
+    restart: always
