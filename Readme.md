@@ -71,3 +71,9 @@ docker push pooja1415/cafe-house:latest
 
 # Run the container on EC2
 docker run -d --name cafe-house -p 80:80 pooja1415/cafe-house:latest
+
+🙋‍♀️ Author
+Pooja Suresh Hase
+DevOps Enthusiast | CI/CD | AWS | Jenkins | Docker
+📧 poojahase14@com
+🌐 https://www.linkedin.com/in/pooja-hase/
