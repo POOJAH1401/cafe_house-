@@ -37,6 +37,26 @@ This project showcases the deployment of a static HTML/CSS/JS website using a co
 
 ---
 
+
+## 🛠️ CI/CD Pipeline Flow
+
+1. **Push to GitHub**  
+   Code is updated in the GitHub repository.
+
+2. **Webhook Trigger**  
+   GitHub Webhook notifies Jenkins of the new change.
+
+3. **Jenkins Pipeline**  
+   - Clones the code from GitHub  
+   - Builds Docker image using the Dockerfile  
+   - Pushes image to DockerHub  
+   - Pulls and runs the image on the EC2 instance
+
+4. **Website Live**  
+   The website is accessible via public IP on port 80.
+
+---
+
 ## 🐳 Docker Commands (Optional Use)
 
 ```bash
@@ -49,10 +69,4 @@ docker push pooja1415/cafe-house:latest
 
 # Run the container on EC2
 docker run -d --name cafe-house -p 80:80 pooja1415/cafe-house:latest
-
-🙋‍♀️ Author
-Pooja Suresh Hase
-DevOps Enthusiast | CI/CD | AWS | Jenkins | Docker
-📧 poojahase14@gmail.com
-🌐https://www.linkedin.com/in/pooja-hase-46a820248
 
