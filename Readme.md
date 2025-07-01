@@ -15,6 +15,7 @@ GitHub Webhooks – Trigger Jenkins builds on code push
 🔄 CI/CD Pipeline Flow
 
 Push to GitHub
+
 Code is updated in the GitHub repository.
 Webhook Trigger
 GitHub Webhook notifies Jenkins of the new change.
