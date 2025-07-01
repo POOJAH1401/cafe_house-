@@ -57,6 +57,8 @@ This project showcases the deployment of a static HTML/CSS/JS website using a co
 
 ---
 
+---
+
 ## 🐳 Docker Commands (Optional Use)
 
 ```bash
@@ -69,4 +71,3 @@ docker push pooja1415/cafe-house:latest
 
 # Run the container on EC2
 docker run -d --name cafe-house -p 80:80 pooja1415/cafe-house:latest
-
