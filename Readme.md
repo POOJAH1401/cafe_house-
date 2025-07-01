@@ -1,42 +1,45 @@
-☕ Cafe House - CI/CD Static Website Deployment
+# ☕ Cafe House - CI/CD Static Website Deployment
+
 This project showcases the deployment of a static HTML/CSS/JS website using a complete CI/CD pipeline built with Jenkins, Docker, GitHub, and AWS EC2.
 
+---
 
-🧰 Tech Stack & Tools
+## 🧰 Tech Stack & Tools
 
-Jenkins – Continuous Integration & Deployment
-Docker – Containerization of static website
-DockerHub – Hosting the Docker image
-GitHub – Source code version control
-AWS EC2 (Ubuntu) – Hosting Jenkins and Docker container
-GitHub Webhooks – Trigger Jenkins builds on code push
+- **Jenkins** – Continuous Integration & Deployment
+- **Docker** – Containerization of static website
+- **DockerHub** – Hosting the Docker image
+- **GitHub** – Source code version control
+- **AWS EC2 (Ubuntu)** – Hosting Jenkins and Docker container
+- **GitHub Webhooks** – Trigger Jenkins builds on code push
 
-
-🔄 CI/CD Pipeline Flow
-
-Push to GitHub
-Code is updated in the GitHub repository.
-Webhook Trigger
-GitHub Webhook notifies Jenkins of the new change.
-Jenkins Pipeline
-
-Clones the code from GitHub
-Builds Docker image using the Dockerfile
-Pushes image to DockerHub
-Pulls and runs the image on the EC2 instance
+---
 
 
-Website Live
-The website is accessible via public IP on port 80.
+---
 
-GitHub Webhook Setup
+## 🛠️ CI/CD Pipeline Flow
 
-Repository → Settings → Webhooks
-URL: http://<ec2-ip>:8080/github-webhook/
-Content type: application/json
+1. **Push to GitHub**  
+   Code is updated in the GitHub repository.
 
-🐳 Docker Commands
+2. **Webhook Trigger**  
+   GitHub Webhook notifies Jenkins of the new change.
 
+3. **Jenkins Pipeline**  
+   - Clones the code from GitHub  
+   - Builds Docker image using the Dockerfile  
+   - Pushes image to DockerHub  
+   - Pulls and runs the image on the EC2 instance
+
+4. **Website Live**  
+   The website is accessible via public IP on port 80.
+
+---
+
+## 🐳 Docker Commands (Optional Use)
+
+```bash
 # Build Docker image locally
 docker build -t cafe-house .
 
@@ -47,10 +50,9 @@ docker push pooja1415/cafe-house:latest
 # Run the container on EC2
 docker run -d --name cafe-house -p 80:80 pooja1415/cafe-house:latest
 
-🔧 Jenkins Access
+🙋‍♀️ Author
+Pooja Suresh Hase
+DevOps Enthusiast | CI/CD | AWS | Jenkins | Docker
+📧 poojahase14@gmail.com
+🌐https://www.linkedin.com/in/pooja-hase-46a820248
 
-URL: http://<ec2-ip>:8080
-Initial password: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
-
-⭐ Star this repository if you found it helpful!
