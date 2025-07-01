@@ -1,5 +1,7 @@
 ☕ Cafe House - CI/CD Static Website Deployment
 This project showcases the deployment of a static HTML/CSS/JS website using a complete CI/CD pipeline built with Jenkins, Docker, GitHub, and AWS EC2.
+🚀 Live URL
+Visit the deployed site: http://<your-ec2-public-ip>
 
 🧰 Tech Stack & Tools
 
@@ -37,7 +39,7 @@ GitHub, DockerHub accounts
 Security group: ports 22 (SSH), 80 (HTTP), 8080 (Jenkins)
 
 Installation Commands
-# Install Docker
+bash# Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
@@ -47,15 +49,15 @@ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key 
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt update && sudo apt install jenkins -y
 sudo systemctl start jenkins && sudo systemctl enable jenkins
-
 GitHub Webhook Setup
+
 Repository → Settings → Webhooks
 URL: http://<ec2-ip>:8080/github-webhook/
 Content type: application/json
 
 
 🐳 Docker Commands
-# Build Docker image locally
+bash# Build Docker image locally
 docker build -t cafe-house .
 
 # Tag and push to DockerHub
@@ -64,6 +66,15 @@ docker push pooja1415/cafe-house:latest
 
 # Run the container on EC2
 docker run -d --name cafe-house -p 80:80 pooja1415/cafe-house:latest
+
+📁 Project Structure
+cafe-house/
+├── index.html
+├── css/style.css
+├── js/script.js
+├── images/
+├── Dockerfile
+└── Jenkinsfile
 
 🔧 Jenkins Access
 
