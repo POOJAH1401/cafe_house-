@@ -30,16 +30,8 @@ Pulls and runs the image on the EC2 instance
 Website Live
 The website is accessible via public IP on port 80.
 
-
-🛠️ Quick Setup
-Prerequisites
-
-AWS EC2 instance (t2.medium, Ubuntu 20.04+)
-GitHub, DockerHub accounts
-Security group: ports 22 (SSH), 80 (HTTP), 8080 (Jenkins)
-
-Installation Commands
-bash# Install Docker
+installation commands
+# Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
@@ -49,15 +41,16 @@ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key 
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt update && sudo apt install jenkins -y
 sudo systemctl start jenkins && sudo systemctl enable jenkins
+
 GitHub Webhook Setup
 
 Repository → Settings → Webhooks
 URL: http://<ec2-ip>:8080/github-webhook/
 Content type: application/json
 
-
 🐳 Docker Commands
-bash# Build Docker image locally
+
+# Build Docker image locally
 docker build -t cafe-house .
 
 # Tag and push to DockerHub
@@ -66,20 +59,3 @@ docker push pooja1415/cafe-house:latest
 
 # Run the container on EC2
 docker run -d --name cafe-house -p 80:80 pooja1415/cafe-house:latest
-
-📁 Project Structure
-cafe-house/
-├── index.html
-├── css/style.css
-├── js/script.js
-├── images/
-├── Dockerfile
-└── Jenkinsfile
-
-🔧 Jenkins Access
-
-URL: http://<ec2-ip>:8080
-Initial password: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
-
-⭐ Star this repository if you found it helpful!
